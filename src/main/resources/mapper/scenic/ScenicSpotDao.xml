@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.scenic.dao.ScenicSpotDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.scenic.entity.ScenicSpotEntity" id="scenicSpotMap">
+        <result property="scenicId" column="scenic_id"/>
+        <result property="scenicName" column="scenic_name"/>
+        <result property="scenicDescription" column="scenic_description"/>
+        <result property="scenicAddress" column="scenic_address"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+
+</mapper>
