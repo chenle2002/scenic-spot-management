@@ -7,14 +7,15 @@ import io.renren.modules.scenic.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 
-
 /**
- *
- *
  * @author chenle
  * @email chenle2020ynu@163.com
  * @date 2023-05-12 21:01:43
@@ -29,7 +30,7 @@ public class VisitorController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = visitorService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -40,8 +41,8 @@ public class VisitorController {
      * 信息
      */
     @RequestMapping("/info/{visitorId}")
-    public R info(@PathVariable("visitorId") Integer visitorId){
-		VisitorEntity visitor = visitorService.getById(visitorId);
+    public R info(@PathVariable("visitorId") Integer visitorId) {
+        VisitorEntity visitor = visitorService.getById(visitorId);
 
         return R.ok().put("visitor", visitor);
     }
@@ -50,8 +51,9 @@ public class VisitorController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody VisitorEntity visitor){
-		visitorService.save(visitor);
+    public R save(@RequestBody VisitorEntity visitor) {
+        visitor.setCreatetime(new Date());
+        visitorService.save(visitor);
 
         return R.ok();
     }
@@ -60,8 +62,8 @@ public class VisitorController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody VisitorEntity visitor){
-		visitorService.updateById(visitor);
+    public R update(@RequestBody VisitorEntity visitor) {
+        visitorService.updateById(visitor);
 
         return R.ok();
     }
@@ -70,8 +72,8 @@ public class VisitorController {
      * 删除
      */
     @RequestMapping("/delete")
-    public R delete(@RequestBody Integer[] visitorIds){
-		visitorService.removeByIds(Arrays.asList(visitorIds));
+    public R delete(@RequestBody Integer[] visitorIds) {
+        visitorService.removeByIds(Arrays.asList(visitorIds));
 
         return R.ok();
     }
