@@ -1,30 +1,29 @@
 package io.renren.modules.scenic.entity;
 
-
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
  *
  *
  * @author chenle
  * @email chenle2020ynu@163.com
- * @date 2023-05-12 21:01:42
+ * @date 2023-05-13 16:54:11
  */
 @Data
-@TableName("order")
-public class OrderEntity implements Serializable {
+@TableName("scenic_orders")
+public class ScenicordersEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 *
 	 */
 	@TableId
-	private Integer orderId;
+	private String orderId;
 	/**
 	 *
 	 */
@@ -36,11 +35,11 @@ public class OrderEntity implements Serializable {
 	/**
 	 *
 	 */
-	private String orderDescription;
+	private String description;
 	/**
 	 *
 	 */
-	private Float price;
+	private String price;
 	/**
 	 *
 	 */

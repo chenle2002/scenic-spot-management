@@ -4,10 +4,12 @@ import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 import io.renren.modules.scenic.entity.AttractionsEntity;
 import io.renren.modules.scenic.service.AttractionsService;
+import io.renren.modules.scenic.vo.AttractionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,8 +33,8 @@ public class AttractionsController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attractionsService.queryPage(params);
-
-        return R.ok().put("page", page);
+        List<AttractionVo> attractionVos=attractionsService.getlist();
+        return R.ok().put("page", attractionVos);
     }
 
 
@@ -51,9 +53,13 @@ public class AttractionsController {
      */
     @RequestMapping("/save")
     public R save(@RequestBody AttractionsEntity attractions){
-		attractionsService.save(attractions);
+        if(attractionsService.judgeSpotAlive(attractions)){
+            attractionsService.save(attractions);
+            return R.ok();
+        }else {
+            return R.error("您输入的景区不存在!");
+        }
 
-        return R.ok();
     }
 
     /**
