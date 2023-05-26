@@ -44,5 +44,6 @@ public class ScenicOrderResVo implements Serializable {
      *
      */
     private Date createtime;
+    private String type;
 
 }

@@ -24,5 +24,7 @@ public interface AttractionsService extends IService<AttractionsEntity> {
 
 
     boolean judgeSpotAlive(AttractionsEntity attractions);
+
+    boolean judgeAttractionAlive(Integer scenicSpotId);
 }
 

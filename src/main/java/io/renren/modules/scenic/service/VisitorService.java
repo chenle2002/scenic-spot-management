@@ -2,8 +2,10 @@ package io.renren.modules.scenic.service;
 
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
+import io.renren.modules.scenic.entity.ScenicordersEntity;
 import io.renren.modules.scenic.entity.VisitorEntity;
 
 import java.util.Map;
@@ -18,5 +20,6 @@ import java.util.Map;
 public interface VisitorService extends IService<VisitorEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+    public boolean judgeVisitorAlive(ScenicordersEntity scenicorders);
 }
 

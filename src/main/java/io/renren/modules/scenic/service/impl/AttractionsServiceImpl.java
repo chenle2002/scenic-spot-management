@@ -62,5 +62,12 @@ public class AttractionsServiceImpl extends ServiceImpl<AttractionsDao, Attracti
         return true;
     }
 
+    @Override
+    public boolean judgeAttractionAlive(Integer scenicSpotId) {
+        List<AttractionsEntity> scenic_id = this.baseMapper.selectList(new QueryWrapper<AttractionsEntity>().eq("scenic_id", scenicSpotId));
+        if(scenic_id!=null) return true;
+        return false;
+    }
+
 
 }

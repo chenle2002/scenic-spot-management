@@ -4,6 +4,7 @@ package io.renren.modules.scenic.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import io.renren.modules.scenic.entity.ScenicordersEntity;
 import io.renren.modules.scenic.vo.ScenicOrderResVo;
 
@@ -24,10 +25,8 @@ public interface ScenicordersService extends IService<ScenicordersEntity> {
 
     List<ScenicOrderResVo> listall();
 
-    boolean judgeVisitorAlive(ScenicordersEntity scenicorders);
-
-    boolean judgeSpotAlive(ScenicordersEntity scenicorders);
-
     boolean judgeSpotStatus(ScenicordersEntity scenicorders);
+
+    R saveAndJudge(ScenicordersEntity scenicorders);
 }
 

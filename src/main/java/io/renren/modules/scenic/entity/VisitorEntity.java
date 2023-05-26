@@ -17,25 +17,12 @@ import java.util.Date;
  */
 @Data
 @TableName("visitor")
-public class VisitorEntity implements Serializable {
+public class VisitorEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 *
-	 */
 	@TableId
 	private Integer visitorId;
-	/**
-	 *
-	 */
 	private String phone;
-	/**
-	 *
-	 */
 	private String visitorname;
-	/**
-	 *
-	 */
 	private Date createtime;
-
 }

@@ -7,12 +7,11 @@ import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.Query;
 import io.renren.modules.scenic.dao.ScenicSpotDao;
 import io.renren.modules.scenic.entity.ScenicSpotEntity;
+import io.renren.modules.scenic.entity.ScenicordersEntity;
 import io.renren.modules.scenic.service.ScenicSpotService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
-
 
 
 @Service("scenicSpotService")
@@ -28,4 +27,12 @@ public class ScenicSpotServiceImpl extends ServiceImpl<ScenicSpotDao, ScenicSpot
         return new PageUtils(page);
     }
 
+    @Override
+    public boolean judgeSpotAlive(ScenicordersEntity scenicorders) {
+        ScenicSpotEntity scenic_id = this.baseMapper.selectOne(new QueryWrapper<ScenicSpotEntity>().eq("scenic_id", scenicorders.getScenicId()));
+        if (scenic_id == null) return false;
+        else {
+            return scenic_id.getStatus() == 1 ? true : false;
+        }
+    }
 }

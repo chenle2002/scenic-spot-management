@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
 
 
@@ -26,8 +25,18 @@ import io.renren.common.utils.R;
 @RestController
 @RequestMapping("/scenicorders")
 public class ScenicordersController {
+
     @Autowired
     private ScenicordersService scenicordersService;
+
+    /**
+     * 保存订单信息
+     */
+    @RequestMapping("/save")
+    public R save(@RequestBody ScenicordersEntity scenicorders) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        return scenicordersService.saveAndJudge(scenicorders);
+    }
+
 
     /**
      * 列表
@@ -51,31 +60,7 @@ public class ScenicordersController {
         return R.ok().put("scenicorders", scenicorders);
     }
 
-    /**
-     * 保存
-     */
-    @RequestMapping("/save")
-    public R save(@RequestBody ScenicordersEntity scenicorders) {
-        //判断游客存不存在
-        if (scenicordersService.judgeVisitorAlive(scenicorders)) {
-            //判断该景区存不存在
-            if (scenicordersService.judgeSpotAlive(scenicorders)) {
-                //判断购票景区是否开放
-                if (scenicordersService.judgeSpotStatus(scenicorders)) {
-                    scenicorders.setCreatetime(new Date());
-                    scenicorders.setOrderId(String.valueOf(UUID.randomUUID()));
-                    scenicordersService.save(scenicorders);
-                    return R.ok();
-                } else {
-                    return R.error("您输入的景区状态未开放!");
-                }
-            } else {
-                return R.error("您输入的景区不存在!");
-            }
-        } else {
-            return R.error("您输入的游客不存在!");
-        }
-    }
+
 
     /**
      * 修改

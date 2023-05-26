@@ -1,5 +1,6 @@
 package io.renren.modules.scenic.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -44,5 +45,6 @@ public class ScenicordersEntity implements Serializable {
 	 *
 	 */
 	private Date createtime;
+
 
 }
