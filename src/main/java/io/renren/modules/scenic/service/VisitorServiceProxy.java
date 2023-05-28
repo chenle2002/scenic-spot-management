@@ -29,5 +29,4 @@ public class VisitorServiceProxy extends VisitorServiceImpl implements VisitorSe
         System.out.println("调用judgeVisitorAlive方法");
         return visitorService.judgeVisitorAlive(scenicorders);
     }
-
 }
