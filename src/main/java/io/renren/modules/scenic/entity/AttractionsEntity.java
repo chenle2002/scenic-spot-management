@@ -2,7 +2,9 @@ package io.renren.modules.scenic.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -15,17 +17,11 @@ import java.io.Serializable;
  */
 @Data
 @TableName("attractions")
-public class AttractionsEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 *
-	 */
+@NoArgsConstructor
+@AllArgsConstructor
+public class AttractionsEntity extends Attractions implements Serializable {
 	@TableId
 	private Integer attractionsId;
-	/**
-	 *
-	 */
 	private String scenicName;
 	/**
 	 *
@@ -35,6 +31,7 @@ public class AttractionsEntity implements Serializable {
 	 *
 	 */
 	private String scenicDescription;
+
 	/**
 	 *
 	 */
@@ -43,5 +40,8 @@ public class AttractionsEntity implements Serializable {
 	 *
 	 */
 	private Integer status;
-
+	/**
+	 *
+	 */
+	private double price;
 }
